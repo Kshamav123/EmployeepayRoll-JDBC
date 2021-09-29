@@ -49,6 +49,13 @@ public class EmployeePayRoll {
 	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
 	@Override
 	public String toString() {
