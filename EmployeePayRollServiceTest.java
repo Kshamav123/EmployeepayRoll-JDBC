@@ -89,5 +89,80 @@ public class EmployeePayRollServiceTest {
 
 	}
 	
+	/**
+	 * test case to sum of salary
+	 * 
+	 * @throws EmployeePayrollException
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	@Test
+	public void givenEmployeePayrollDatabase_ShouldReturnSumofEmployeeSalary()
+			throws EmployeePayRollException, ClassNotFoundException, SQLException {
+		EmplyeePayRollService employeePayrollService = new EmplyeePayRollService();
+		employeePayrollService.sum();
+
+	}
+	
+	/**
+	 * test case to average of salary
+	 * 
+	 * @throws EmployeePayrollException
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	@Test
+	public void givenEmployeePayrollDatabase_ShouldReturnAverageofEmployeeSalary()
+			throws EmployeePayRollException, ClassNotFoundException, SQLException {
+		EmplyeePayRollService employeePayrollService = new EmplyeePayRollService();
+		employeePayrollService.average();
+
+	}
+	
+	/**
+	 * test case to minimum of salary
+	 * 
+	 * @throws EmployeePayrollException
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	@Test
+	public void givenEmployeePayrollDatabase_ShouldReturnMinofEmployeeSalary()
+			throws EmployeePayRollException, ClassNotFoundException, SQLException {
+		EmplyeePayRollService employeePayrollService = new EmplyeePayRollService();
+		employeePayrollService.minimum();
+
+	}
+	
+	/**
+	 * test case to max of salary
+	 * 
+	 * @throws EmployeePayrollException
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	@Test
+	public void givenEmployeePayrollDatabase_ShouldReturnMaxofEmployeeSalary()
+			throws EmployeePayRollException, ClassNotFoundException, SQLException {
+		EmplyeePayRollService employeePayrollService = new EmplyeePayRollService();
+		employeePayrollService.maximum();
+
+	}
+	
+	/**
+	 * test case to count of salary
+	 * 
+	 * @throws EmployeePayrollException
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	@Test
+	public void givenEmployeePayrollDatabase_ShouldReturnCountofEmployeeSalary()
+			throws EmployeePayRollException, ClassNotFoundException, SQLException {
+		EmplyeePayRollService employeePayrollService = new EmplyeePayRollService();
+		employeePayrollService.count();
+
+	}
+	
 }
 
