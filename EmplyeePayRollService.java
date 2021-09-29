@@ -147,4 +147,14 @@ public class EmplyeePayRollService {
 		return success;
 
 	}
+
+public void retrieveDate() throws ClassNotFoundException, SQLException {
+	Connection connection = getConnection();
+	Statement statement = connection.createStatement();
+	ResultSet resultSet = statement.executeQuery("select * from employee_payroll where start BETWEEN CAST('2018-01-01' AS DATE) AND DATE(NOW())");
+	while (resultSet.next()) {
+		System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2) + " " + resultSet.getString(3) + " "
+				+ resultSet.getDouble(4) + " " + resultSet.getDate(5));
+	}
+}
 }
