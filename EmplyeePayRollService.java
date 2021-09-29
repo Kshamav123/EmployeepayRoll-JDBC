@@ -1,6 +1,7 @@
 package com.bridgelab.EmployeePay;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,11 +12,11 @@ import java.util.Enumeration;
 import com.mysql.cj.jdbc.Driver;
 
 public class EmplyeePayRollService {
-	
+
 	private static final String url = "jdbc:mysql://localhost:3306/payroll_service";
 	private static final String userName = "root";
 	private static final String password = "tempyml@13";
-	
+
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -66,6 +67,7 @@ public class EmplyeePayRollService {
 		}
 
 	}
+
 	/**
 	 * to update the salary
 	 * 
@@ -92,17 +94,19 @@ public class EmplyeePayRollService {
 		return success;
 
 	}
+
 	/**
 	 * updating salary using prepared statement
 	 */
-public boolean updateSalaryPrepared() throws EmployeePayRollException {
-		
+	public boolean updateSalaryPrepared() throws EmployeePayRollException {
+
 		Connection connection;
 		boolean success = false;
 		try {
 			connection = getConnection();
 			Statement statement = connection.createStatement();
-			PreparedStatement preparedStatement = connection.prepareStatement("update employee_payroll set salary=? where name=?");
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("update employee_payroll set salary=? where name=?");
 			preparedStatement.setDouble(1, 300000);
 			preparedStatement.setString(2, "Teresa");
 			System.out.println("Updated prepared statement");
@@ -114,7 +118,33 @@ public boolean updateSalaryPrepared() throws EmployeePayRollException {
 		}
 
 		return success;
-		
+
+	}
+
+	/**
+	 * method to retrieve employee data based on name
+	 * 
+	 * @param name
+	 * @return
+	 * @throws EmployeePayrollException
+	 */
+	public boolean retrievePrepared(String name) throws EmployeePayRollException {
+		Connection connection;
+		boolean success = false;
+		try {
+			connection = getConnection();
+			Statement statement = connection.createStatement();
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("select * from employee_payroll where name=?");
+			preparedStatement.setString(1, name);
+			success = true;
+		} catch (ClassNotFoundException e) {
+			throw new EmployeePayRollException("class not found");
+		} catch (SQLException e) {
+			throw new EmployeePayRollException("sql exception");
+		}
+
+		return success;
+
 	}
 }
-	
