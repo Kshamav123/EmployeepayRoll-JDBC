@@ -21,6 +21,12 @@ public class EmployeePayRollServiceTest {
 		EmplyeePayRollService employeePayrollService = new EmplyeePayRollService();
 		employeePayrollService.selectData();
 	}
+	@Test
+	public void givenEmployeePayrollDatabase_ShouldUpdateSalary() throws EmployeePayRollException {
+		EmplyeePayRollService employeePayrollService = new EmplyeePayRollService();
+		boolean result = employeePayrollService.updateSalary();
+		Assert.assertTrue(result);
 
+	}
 }
 
