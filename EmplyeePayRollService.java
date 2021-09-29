@@ -2,6 +2,7 @@ package com.bridgelab.EmployeePay;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -90,6 +91,30 @@ public class EmplyeePayRollService {
 
 		return success;
 
+	}
+	/**
+	 * updating salary using prepared statement
+	 */
+public boolean updateSalaryPrepared() throws EmployeePayRollException {
+		
+		Connection connection;
+		boolean success = false;
+		try {
+			connection = getConnection();
+			Statement statement = connection.createStatement();
+			PreparedStatement preparedStatement = connection.prepareStatement("update employee_payroll set salary=? where name=?");
+			preparedStatement.setDouble(1, 300000);
+			preparedStatement.setString(2, "Teresa");
+			System.out.println("Updated prepared statement");
+			success = true;
+		} catch (ClassNotFoundException e) {
+			throw new EmployeePayRollException("class not found");
+		} catch (SQLException e) {
+			throw new EmployeePayRollException("sql exception");
+		}
+
+		return success;
+		
 	}
 }
 	
