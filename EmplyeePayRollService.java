@@ -151,10 +151,133 @@ public class EmplyeePayRollService {
 public void retrieveDate() throws ClassNotFoundException, SQLException {
 	Connection connection = getConnection();
 	Statement statement = connection.createStatement();
-	ResultSet resultSet = statement.executeQuery("select * from employee_payroll where start BETWEEN CAST('2018-01-01' AS DATE) AND DATE(NOW())");
+	ResultSet resultSet = statement.executeQuery("select * from employee_payroll where start BETWEEN CAST('2018-03-13' AS DATE) AND DATE(NOW())");
 	while (resultSet.next()) {
 		System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2) + " " + resultSet.getString(3) + " "
 				+ resultSet.getDouble(4) + " " + resultSet.getDate(5));
+//		System.out.println("Data retrived");
 	}
+	System.out.println("Data retrieved");
+}
+/**
+ * method to retrieve average salary
+ * 
+ * @throws EmployeePayrollException
+ */
+public void average() throws EmployeePayRollException {
+	Connection connection;
+	try {
+		connection = getConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resultSet = statement
+				.executeQuery("select avg(salary) from employee_payroll where gender='F' group by gender");
+		while (resultSet.next()) {
+			System.out.println(resultSet.getInt(1) + " ");
+
+		}
+	} catch (ClassNotFoundException e) {
+		throw new EmployeePayRollException("class not found");
+	} catch (SQLException e) {
+		throw new EmployeePayRollException("sql exception");
+	}
+
+}
+
+/**
+ * method to retrieve minimum salary
+ * 
+ * @throws EmployeePayrollException
+ */
+public void minimum() throws EmployeePayRollException {
+	Connection connection;
+	try {
+		connection = getConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resultSet = statement
+				.executeQuery("select min(salary) from employee_payroll where gender='F' group by gender");
+		while (resultSet.next()) {
+			System.out.println(resultSet.getInt(1) + " ");
+
+		}
+		System.out.println("min");
+	} catch (ClassNotFoundException e) {
+		throw new EmployeePayRollException("class not found");
+	} catch (SQLException e) {
+		throw new EmployeePayRollException("sql exception");
+	}
+
+}
+
+/**
+ * method to retrieve maximum salary
+ * 
+ * @throws EmployeePayrollException
+ */
+public void maximum() throws EmployeePayRollException {
+	Connection connection;
+	try {
+		connection = getConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resultSet = statement
+				.executeQuery("select max(salary) from employee_payroll where gender='F' group by gender");
+		while (resultSet.next()) {
+			System.out.println(resultSet.getInt(1) + " ");
+
+		}
+		System.out.println("max");
+	} catch (ClassNotFoundException e) {
+		throw new EmployeePayRollException("class not found");
+	} catch (SQLException e) {
+		throw new EmployeePayRollException("sql exception");
+	}
+
+}
+
+/**
+ * method to count employees
+ * 
+ * @throws EmployeePayrollException
+ */
+public void count() throws EmployeePayRollException {
+	Connection connection;
+	try {
+		connection = getConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resultSet = statement.executeQuery("select count(salary) from employee_payroll group by gender");
+		while (resultSet.next()) {
+			System.out.println(resultSet.getInt(1) + " ");
+
+		}
+		System.out.println("count");
+	} catch (ClassNotFoundException e) {
+		throw new EmployeePayRollException("class not found");
+	} catch (SQLException e) {
+		throw new EmployeePayRollException("sql exception");
+	}
+
+}
+/**
+ * method to retrieve sum of salary
+ * 
+ * @throws EmployeePayrollException
+ */
+public void sum() throws EmployeePayRollException {
+	Connection connection;
+	try {
+		connection = getConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resultSet = statement
+				.executeQuery("select sum(salary) from employee_payroll where gender='F' group by gender");
+		while (resultSet.next()) {
+			System.out.println(resultSet.getInt(1) + " ");
+
+		}
+		System.out.println("count");
+	} catch (ClassNotFoundException e) {
+		throw new EmployeePayRollException("class not found");
+	} catch (SQLException e) {
+		throw new EmployeePayRollException("sql exception");
+	}
+
 }
 }
